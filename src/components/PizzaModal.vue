@@ -21,9 +21,7 @@
                 </small>
               </span>
                         </h4>
-
                         <mdb-accordion :panes="panes" material />
-
                         <mdb-card-body>
                             <mdb-row>
                                 <mdb-col md="6">

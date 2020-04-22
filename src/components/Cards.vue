@@ -1,79 +1,30 @@
 <template>
-    <mdb-container>
-        <section class="text-center my-5">
-            <mdb-row>
-                <mdb-col lg="3" md="6" class="mb-lg-0 mb-4">
-                    <mdb-card cascade narrow ecommerce>
-                        <mdb-view overlay="white-slight" cascade>
-                            <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/1.jpg" waves top alt="sample photo"/>
-                        </mdb-view>
-                        <mdb-card-body class="text-center" cascade>
-                            <a href="" class="grey-text">
-                                <h5>Denim</h5>
-                            </a>
-                            <mdb-card-title>
-                                <strong>
-                                    <a href="">Denim trousers</a>
-                                </strong>
-                            </mdb-card-title>
-                            <mdb-card-text>Neque porro quisquam est, qui dolorem ipsum quia dolor sit.</mdb-card-text>
-                            <mdb-card-footer color="white" textColor="black" class="px-1">
-                <span class="float-left font-weight-bold">
-                  <strong>49$</strong>
-                </span>
-                                <span class="float-right">
-                  <a>
-                    <mdb-tooltip trigger="hover" :options="{placement: 'top'}">
-                      <div class="tooltip">
-                        Add to cart
-                      </div>
-                      <mdb-icon slot="reference" icon="shopping-cart" class="grey-text ml-3"></mdb-icon>
-                    </mdb-tooltip>
-                  </a>
-                  <a>
-                    <mdb-tooltip trigger="hover" :options="{placement: 'top'}">
-                      <div class="tooltip">
-                        Share
-                      </div>
-                      <mdb-icon slot="reference" icon="share-alt" class="grey-text ml-3"></mdb-icon>
-                    </mdb-tooltip>
-                  </a>
-                  <a class="active">
-                    <mdb-tooltip trigger="hover" class="active" :options="{placement: 'top'}">
-                      <div class="tooltip">
-                        Added to watchlist
-                      </div>
-                      <mdb-icon slot="reference" icon="heart" class="ml-3"></mdb-icon>
-                    </mdb-tooltip>
-                  </a>
-                </span>
-                            </mdb-card-footer>
-                        </mdb-card-body>
-                    </mdb-card>
-                </mdb-col>
-            </mdb-row>
-        </section>
-    </mdb-container>
-</template>
+    <mdb-card>
+        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+        <mdb-card-body>
+            <mdb-card-title>Basic card</mdb-card-title>
+            <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
+            <mdb-btn color="primary">Add to cart</mdb-btn>
+
+                <PizzaModal/>
+
+        </mdb-card-body>
+    </mdb-card>
+</template>\
+
 <script>
-    import { mdbContainer, mdbRow, mdbCol, mdbCard, mdbCardImage, mdbCardBody, mdbCardTitle, mdbCardFooter, mdbCardText, mdbIcon, mdbTooltip, mdbView } from 'mdbvue';
+    import PizzaModal from '@/components/PizzaModal.vue'
+    import { mdbCard, mdbCardImage, mdbCardBody, mdbCardTitle, mdbCardText, mdbBtn } from 'mdbvue';
     export default {
-        name: 'EcommercePage',
+        name: 'CardPage',
         components: {
-            mdbContainer,
-            mdbRow,
-            mdbCol,
             mdbCard,
             mdbCardImage,
             mdbCardBody,
             mdbCardTitle,
-            mdbCardFooter,
             mdbCardText,
-            mdbIcon,
-            mdbTooltip,
-            mdbView
-
+            mdbBtn,
+            PizzaModal
         }
     }
 </script>
-

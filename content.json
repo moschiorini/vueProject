@@ -1,19 +1,50 @@
 {
-  "posts": [
+  "content": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Vegeterian",
+      "cost": 75,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/279-1300.jpg"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Funghi",
+      "cost": 50,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/17-1300.jpg"
+    },
+    {
+      "id": 3,
+      "name": "4 Cheeses ",
+      "cost": 80,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/15-1300.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Capricioasa",
+      "cost": 60,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/844-1300.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Rancho",
+      "cost": 100,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/16-1300.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Peperoni",
+      "cost": 100,
+      "img": "https://static.pizzasushiwok.ru/images/menu_new/39-1300.jpg"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "options": [
+    {
+      "corj": ["Пышный", "Тонкий"],
+      "form": ["Круглая", "Квадратная"],
+      "size": ["mini", "normal", "maxi"],
+      "sir": 0
+    }
+  ],
+  "onCart": [],
+  "orders": []
 }

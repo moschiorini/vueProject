@@ -5,31 +5,37 @@
             <mdb-modal-body>
                 <mdb-row>
                     <mdb-col lg="5">
-                        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
+                        <mdb-carousel :items="carousel" controlls indicators thumbnails :thumbnailWidth="90"/>
                     </mdb-col>
                     <mdb-col lg="7">
                         <h2 class="h2-responsive product-name">
-                            <strong>Product Name</strong>
+                            <strong>{{name}}</strong>
                         </h2>
                         <h4 class="h4-responsive">
               <span class="green-text">
-                <strong>$49</strong>
-              </span>
-                            <span class="grey-text">
-                <small>
-                  <strong>$89</strong>
-                </small>
+                <strong>${{price}}</strong>
               </span>
                         </h4>
-                        <mdb-accordion :panes="panes" material />
+
+                        <mdb-accordion material/>
+
                         <mdb-card-body>
                             <mdb-row>
-                                <mdb-col md="6">
-                                    <mdb-select :options="colors" />
-                                </mdb-col>
-                                <mdb-col md="6">
-                                    <mdb-select :options="sizes" />
-                                </mdb-col>
+                                <center>
+                                    <mdb-col md="6">
+                                        <select class="browser-default custom-select">
+                                            <option v-for="item in options[0].corj" :key="item">{{item}}</option>
+                                        </select>
+
+                                        <select class="browser-default custom-select">
+                                            <option v-for="item in options[0].form" :key="item">{{item}}</option>
+                                        </select>
+
+                                        <select class="browser-default custom-select">
+                                            <option v-for="item in options[0].size" :key="item">{{item}}</option>
+                                        </select>
+                                    </mdb-col>
+                                </center>
                             </mdb-row>
                             <div class="text-center">
                                 <mdb-btn color="secondary" @click="product=false">Close</mdb-btn>
@@ -38,7 +44,8 @@
                                         icon="cart-plus"
                                         iconClass="ml-2 white-text"
                                         iconRight
-                                >Add to cart</mdb-btn>
+                                >Add to cart
+                                </mdb-btn>
                             </div>
                         </mdb-card-body>
                     </mdb-col>
@@ -49,20 +56,34 @@
 </template>
 
 <script>
-    import { mdbRow, mdbCol, mdbBtn, mdbModal, mdbModalBody, mdbAccordion, mdbCardBody, mdbSelect, mdbIcon,} from 'mdbvue';
+    import {
+        mdbRow,
+        mdbCol,
+        mdbBtn,
+        mdbIcon,
+        mdbModal,
+        mdbModalBody,
+        mdbAccordion,
+        mdbCardBody,
+        mdbCarousel,
+        mdbContainer
+    } from 'mdbvue';
+
     export default {
         name: 'ModalExamplesPage',
+        props: ['price', 'name', 'options'],
         components: {
             mdbRow,
             mdbCol,
             mdbBtn,
+            // eslint-disable-next-line vue/no-unused-components
             mdbIcon,
             mdbModal,
             mdbModalBody,
             mdbAccordion,
             mdbCardBody,
-            mdbSelect
-
+            mdbCarousel,
+            mdbContainer,
         },
         data() {
             return {
@@ -92,16 +113,6 @@
                             "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(25).jpg",
                         alt: "Third slide"
                     }
-                ],
-                colors: [
-                    { value: 'red', text: 'red'},
-                    { value: 'pink', text: 'pink'},
-                    { value: 'green', text: 'green'}
-                ],
-                sizes: [
-                    { value: 'small', text: 'small'},
-                    { value: 'medium', text: 'medium'},
-                    { value: 'large', text: 'large'}
                 ]
             }
         }

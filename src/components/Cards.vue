@@ -1,30 +1,42 @@
 <template>
-    <mdb-card>
-        <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
-        <mdb-card-body>
-            <mdb-card-title>Basic card</mdb-card-title>
-            <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-            <mdb-btn color="primary">Add to cart</mdb-btn>
-
-                <PizzaModal/>
-
-        </mdb-card-body>
-    </mdb-card>
-</template>\
+    <div class="col-md-3">
+        <div class="card" :id="id">
+            <img :src="img" alt="//placehold.it/200" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">{{name}}</h4>
+                <div class="card-text">${{price}}</div>
+                <div class="row justify-content-end">
+                    <div class="row">
+                        <div class="col-sm">
+                            <button class="btn btn-primary">Add to cart</button>
+                        </div>
+                        <div class="col-sm">
+                            <PizzaModal
+                            :name="name"
+                            :price="price"
+                            :options="options"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <script>
-    import PizzaModal from '@/components/PizzaModal.vue'
-    import { mdbCard, mdbCardImage, mdbCardBody, mdbCardTitle, mdbCardText, mdbBtn } from 'mdbvue';
+    import PizzaModal from "./PizzaModal";
     export default {
         name: 'CardPage',
+        props: ['id', 'name', 'price', 'img', 'options'],
         components: {
-            mdbCard,
-            mdbCardImage,
-            mdbCardBody,
-            mdbCardTitle,
-            mdbCardText,
-            mdbBtn,
             PizzaModal
         }
     }
 </script>
+
+<style>
+    .col-md-3 {
+        margin-bottom: 50px;
+    }
+</style>

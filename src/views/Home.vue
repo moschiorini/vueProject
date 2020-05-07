@@ -51,7 +51,6 @@
                 return this.$store.getters.content;
             },
             option() {
-                console.log(this.$store.getters.options);
                 return this.$store.getters.options;
             }
         },

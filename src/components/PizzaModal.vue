@@ -5,7 +5,8 @@
             <mdb-modal-body>
                 <mdb-row>
                     <mdb-col lg="5">
-                        <mdb-carousel :items="carousel" controlls indicators thumbnails :thumbnailWidth="90"/>
+                        <img :src="img" alt="thumbnail" class="img-thumbnail"
+                             style="width: 200px">
                     </mdb-col>
                     <mdb-col lg="7">
                         <h2 class="h2-responsive product-name">
@@ -65,13 +66,12 @@
         mdbModalBody,
         mdbAccordion,
         mdbCardBody,
-        mdbCarousel,
         mdbContainer
     } from 'mdbvue';
 
     export default {
         name: 'ModalExamplesPage',
-        props: ['price', 'name', 'options'],
+        props: ['price', 'name', 'options', 'img'],
         components: {
             mdbRow,
             mdbCol,
@@ -82,38 +82,11 @@
             mdbModalBody,
             mdbAccordion,
             mdbCardBody,
-            mdbCarousel,
-            mdbContainer,
+            mdbContainer
         },
         data() {
             return {
                 product: false,
-                carousel: [
-                    {
-                        img: true,
-                        src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(23).jpg",
-                        thumbnail:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(23).jpg",
-                        alt: "First slide"
-                    },
-                    {
-                        img: true,
-                        src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(24).jpg",
-                        thumbnail:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(24).jpg",
-                        alt: "Second slide"
-                    },
-                    {
-                        img: true,
-                        src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(25).jpg",
-                        thumbnail:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(25).jpg",
-                        alt: "Third slide"
-                    }
-                ]
             }
         }
     }

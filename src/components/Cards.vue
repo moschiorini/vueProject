@@ -8,13 +8,14 @@
                 <div class="row justify-content-end">
                     <div class="row">
                         <div class="col-sm">
-                            <button class="btn btn-primary">Add to cart</button>
+                            <button class="btn btn-primary" @click="addToCart(id)">Add to cart</button>
                         </div>
                         <div class="col-sm">
                             <PizzaModal
                             :name="name"
                             :price="price"
                             :options="options"
+                            :img="img"
                             />
                         </div>
                     </div>
@@ -31,6 +32,11 @@
         props: ['id', 'name', 'price', 'img', 'options'],
         components: {
             PizzaModal
+        },
+        methods: {
+            addToCart(id) {
+                this.$store.dispatch('addToCart', id)
+            }
         }
     }
 </script>

@@ -1,86 +1,76 @@
 <template>
-    <mdb-container>
-        <!-- trigger modal button -->
-        <mdb-btn color="default" class="mb-3 mr-5" @click="cart = true">
-            Shopping Cart
-        </mdb-btn>
-        <!-- cart modal -->
-        <mdb-modal :show="cart" @close="cart = false" class="text-center">
+    <div>
+        <!-- Side Modal Top Right -->
+        <mdb-btn color="primary" @click.native="modal = true">Full height right</mdb-btn>
+        <mdb-modal side position="right" fullHeight direction="right" :show="modal" @close="modal = false">
             <mdb-modal-header>
-                <h4 class="modal-title" id="myModalLabel">Your cart</h4>
+                <mdb-modal-title>Modal title</mdb-modal-title>
             </mdb-modal-header>
             <mdb-modal-body>
-                <mdb-tbl hover>
-                    <mdb-tbl-head>
-                        <tr>
-                            <th>#</th>
-                            <th>Product name</th>
-                            <th>Price</th>
-                            <th>Remove</th>
-                        </tr>
-                    </mdb-tbl-head>
-                    <tbl-body>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Product 1</td>
-                            <td>100$</td>
-                            <td><a><mdb-icon icon="times"/></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Product 2</td>
-                            <td>100$</td>
-                            <td><a><mdb-icon icon="times"/></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Product 3</td>
-                            <td>100$</td>
-                            <td><a><mdb-icon icon="times"/></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Product 4</td>
-                            <td>100$</td>
-                            <td><a><mdb-icon icon="times"/></a></td>
-                        </tr>
-                        <tr class="total">
-                            <th scope="row">5</th>
-                            <td>Total</td>
-                            <td>400$</td>
-                            <td></td>
-                        </tr>
-                    </tbl-body>
-                </mdb-tbl>
+                <table class="table">
+                    <tbody>
+                    <tr v-for="(item, index) in cart" :key="index">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.cost}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" @click="removeFromCart(index, item.invId)">&times;
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>{{ total}}</th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                </table>
             </mdb-modal-body>
             <mdb-modal-footer>
-                <mdb-btn outline="primary" @click="cart = false">Close</mdb-btn>
-                <mdb-btn color="primary" @click="cart = false">Checkout</mdb-btn>
+                <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
+                <mdb-btn color="primary">Save changes</mdb-btn>
             </mdb-modal-footer>
         </mdb-modal>
-    </mdb-container>
+    </div>
 </template>
 
 <script>
-    import { mdbContainer, mdbBtn, mdbIcon, mdbModal, mdbModalHeader, mdbModalBody, mdbModalFooter, mdbTblHead } from 'mdbvue';
+    import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
     export default {
-        name: 'ModalExamplesPage',
         components: {
-            mdbContainer,
-            mdbBtn,
-            mdbIcon,
             mdbModal,
             mdbModalHeader,
+            mdbModalTitle,
+            // eslint-disable-next-line vue/no-unused-components
             mdbModalBody,
             mdbModalFooter,
-           // mdbTable,
-            mdbTblHead,
-           // mdbTblBody
+            mdbBtn
         },
         data() {
             return {
-                cart: false,
+                modal: false
+            };
+        },
+
+        computed: {
+            cart() {
+                return this.$store.getters.onCart.map((cartItem) => {
+                    return this.$store.getters.content.find((forSaleItem) => {
+                        return cartItem === forSaleItem.id;
+                    });
+                });
+            },
+
+            total() {
+                return this.cart.reduce((acc, cur) => acc + cur.cost, 0);
             }
+        },
+
+        methods: {
+            removeFromCart(index) { this.$store.dispatch('removeFromCart', index); },
+        },
+
+        mounted() {
+            this.$store.dispatch('loadCart');
         }
-    }
+    };
 </script>

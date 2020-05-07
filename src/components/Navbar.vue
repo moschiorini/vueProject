@@ -18,7 +18,7 @@
 
 <script>
     import { mdbNavbar, mdbNavbarBrand, mdbNavbarToggler, mdbNavbarNav, mdbNavItem, mdbDropdown} from 'mdbvue';
-    import ShoppingCart from '@/components/ShoppingCart.vue'
+    import ShoppingCart from "./ShoppingCart";
     export default {
         name: 'Navbar',
         components: {

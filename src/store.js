@@ -4,7 +4,7 @@ import axios from 'axios'
 
 Vue.use(Vuex, axios)
 
-const base_url = ' http://localhost:3000/';
+const base_url = 'http://localhost:3000/';
 
 export default new Vuex.Store({
     state: {
@@ -32,6 +32,7 @@ export default new Vuex.Store({
                 .get(base_url + 'options')
                 .then(data => {
                     let options = data.data;
+                    console.log(options);
                     commit('LOAD_OPTIONS', options);
                 })
                 .catch(error => {
@@ -62,6 +63,14 @@ export default new Vuex.Store({
                     console.error(error);
                 })
         },
+
+        addToCart(context, invId) {
+            context.commit('ADD_TO_CART', invId);
+        },
+
+        removeFromCart(context, index) {
+            context.commit('REMOVE_FROM_CART', index);
+        },
     },
 
     getters: {
@@ -86,6 +95,14 @@ export default new Vuex.Store({
 
         LOAD_ORDERS(state, orders) {
             state.orders = orders;
-        }
+        },
+
+        ADD_TO_CART(state, invId) {
+            state.onCart.push(invId);
+        },
+
+        REMOVE_FROM_CART(state, index) {
+            state.onCart.splice(index, 1);
+        },
     }
 })
